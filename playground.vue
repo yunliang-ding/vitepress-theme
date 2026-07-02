@@ -1,5 +1,7 @@
 <script setup lang="ts">
 // @ts-nocheck
+import React from "react";
+import * as ReactDOMClient from "react-dom/client";
 import { ref, inject, onMounted, onBeforeUnmount } from "vue";
 /**
  * 通用 Playground 组件
@@ -30,8 +32,6 @@ onMounted(async () => {
   if (!matchKey) return;
 
   const rawCode = (await config.codeGlobs[matchKey]()).raw as string;
-  const React = (window as any).React;
-  const ReactDOM = (window as any).ReactDOM;
   const { transform } = await import("sucrase");
   const userModules = await config.loadModules();
 
@@ -202,7 +202,7 @@ onMounted(async () => {
     );
   }
 
-  reactRoot = ReactDOM.createRoot(containerRef.value);
+  reactRoot = ReactDOMClient.createRoot(containerRef.value);
   reactRoot.render(React.createElement(App));
 });
 

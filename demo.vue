@@ -1,5 +1,7 @@
 <script setup lang="ts">
 // @ts-nocheck
+import React from "react";
+import * as ReactDOMClient from "react-dom/client";
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import { withBase } from 'vitepress'
 
@@ -17,11 +19,8 @@ let copyTimer: ReturnType<typeof setTimeout> | null = null;
 
 function mountPreview() {
   if (!previewRef.value) return;
-  const React = (window as any).React;
-  const ReactDOM = (window as any).ReactDOM;
-  if (!React || !ReactDOM) return;
   previewRoot?.unmount();
-  previewRoot = ReactDOM.createRoot(previewRef.value);
+  previewRoot = ReactDOMClient.createRoot(previewRef.value);
   previewRoot.render(React.createElement(props.component));
 }
 function openLive() {

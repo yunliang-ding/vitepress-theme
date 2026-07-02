@@ -10,6 +10,11 @@ function getMd(srcDir, options) {
   return mdPromise;
 }
 
+// 配置文件变更时 VitePress 会重新加载插件，重置单例避免引用已销毁的 Shiki 实例
+export function resetMd() {
+  mdPromise = null;
+}
+
 export function shikiRawPlugin(options) {
   let srcDir = process.cwd();
 
@@ -18,6 +23,8 @@ export function shikiRawPlugin(options) {
     enforce: "pre",
     configResolved(config) {
       srcDir = config.root;
+      // 每次配置重新解析时重置 markdown renderer，避免 Shiki disposed 错误
+      resetMd();
     },
     async load(id) {
       if (!id.endsWith("?raw")) return null;

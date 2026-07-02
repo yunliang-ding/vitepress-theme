@@ -1,0 +1,55 @@
+/* 文档主题 CSS 变量 */
+
+:root {
+  /* 高亮色（可动态修改） */
+  --aui-accent: #197afa;
+  --aui-accent-light: #3891fb;
+  --aui-accent-dark: #0563da;
+  --aui-accent-bg: rgba(25, 122, 250, 0.1);
+
+  /* 亮色主题 */
+  --aui-bg: #ffffff;
+  --aui-bg-soft: #f6f6f7;
+  --aui-bg-mute: #ebebed;
+  --aui-border: #e2e2e3;
+  --aui-text: #213547;
+  --aui-text-2: #4a5270;
+  --aui-text-3: #8b8b8f;
+
+  /* 组件尺寸 */
+  --aui-radius-sm: 4px;
+  --aui-radius: 6px;
+  --aui-radius-lg: 10px;
+
+  /* 间距 */
+  --aui-space-1: 4px;
+  --aui-space-2: 8px;
+  --aui-space-3: 12px;
+  --aui-space-4: 16px;
+
+  /* 字体 */
+  --aui-font-sm: 13px;
+  --aui-font-base: 14px;
+  --aui-font-lg: 16px;
+
+  /* 阴影 */
+  --aui-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --aui-shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --aui-shadow-focus: 0 0 0 3px rgba(25, 122, 250, 0.3);
+}
+
+.dark {
+  --aui-bg: #0c0e13;
+  --aui-bg-soft: #161b27;
+  --aui-bg-mute: #1e2536;
+  --aui-border: #2a3147;
+  --aui-text: #e8ecf8;
+  --aui-text-2: #9ba8c9;
+  --aui-text-3: #5a6480;
+  --aui-accent-bg: rgba(25, 122, 250, 0.18);
+  --aui-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --aui-shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --aui-shadow-focus: 0 0 0 3px rgba(25, 122, 250, 0.4);
+}

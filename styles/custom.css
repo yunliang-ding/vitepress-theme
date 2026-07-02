@@ -1,0 +1,48 @@
+/* 覆盖 VitePress 默认变量，接入主题色 */
+:root {
+  --vp-c-brand-1: var(--aui-accent);
+  --vp-c-brand-2: var(--aui-accent-light);
+  --vp-c-brand-3: var(--aui-accent-dark);
+  --vp-c-brand-soft: rgba(99, 102, 241, 0.1);
+}
+
+.dark .shiki span {
+  color: var(--shiki-dark, inherit);
+  font-size: 13px;
+}
+
+html:not(.dark) .shiki span {
+  color: var(--shiki-light, inherit);
+  font-size: 13px;
+}
+
+.vp-doc .language-tsx {
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+.vp-doc .shiki-themes {
+  padding: 10px 0 !important;
+}
+
+.vp-doc img {
+  margin: 0 !important;
+}
+
+/* demo 代码展示区：复用 VitePress 代码块，隐藏多余 UI */
+.aui-demo-code .language-tsx {
+  margin: 0;
+}
+
+.aui-demo-code .copy,
+.aui-demo-code .lang {
+  display: none !important;
+}
+
+.aui-demo-code pre.shiki {
+  margin: 0;
+  padding: 20px 24px;
+  font-size: 13px;
+  line-height: 1.7;
+  border-radius: 0;
+}

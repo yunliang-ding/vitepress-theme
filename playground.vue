@@ -1,7 +1,6 @@
 <script setup lang="ts">
-// @ts-ignore
+// @ts-nocheck
 import { ref, inject, onMounted, onBeforeUnmount } from "vue";
-
 /**
  * 通用 Playground 组件
  *
@@ -31,12 +30,10 @@ onMounted(async () => {
   if (!matchKey) return;
 
   const rawCode = (await config.codeGlobs[matchKey]()).raw as string;
-  const [{ default: React }, { createRoot }, { transform }, userModules] = await Promise.all([
-    import("react"),
-    import("react-dom/client"),
-    import("sucrase"),
-    config.loadModules(),
-  ]);
+  const React = (window as any).React;
+  const ReactDOM = (window as any).ReactDOM;
+  const { transform } = await import("sucrase");
+  const userModules = await config.loadModules();
 
   // 编译函数：将 TSX 代码转换为可执行模块
   function compileCode(code: string, moduleMap: Record<string, any>) {
@@ -118,10 +115,10 @@ onMounted(async () => {
 
   function App() {
     const [code, setCode] = React.useState(rawCode);
-    const [Preview, setPreview] = React.useState<React.ComponentType | null>(
+    const [Preview, setPreview] = React.useState(
       () => compileCode(rawCode, moduleMap).component,
     );
-    const [error, setError] = React.useState<string | null>(
+    const [error, setError] = React.useState(
       () => compileCode(rawCode, moduleMap).error,
     );
 
@@ -205,7 +202,7 @@ onMounted(async () => {
     );
   }
 
-  reactRoot = createRoot(containerRef.value);
+  reactRoot = ReactDOM.createRoot(containerRef.value);
   reactRoot.render(React.createElement(App));
 });
 

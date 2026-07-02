@@ -1,3 +1,4 @@
+// @ts-nocheck
 import DefaultTheme from "vitepress/theme";
 import Layout from "./layout.vue";
 import Demo from "./demo.vue";

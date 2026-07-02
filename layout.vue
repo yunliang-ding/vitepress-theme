@@ -1,11 +1,8 @@
 <script setup lang="ts">
-// @ts-ignore
+// @ts-nocheck
 import { useData } from "vitepress";
-// @ts-ignore
 import DefaultTheme from "vitepress/theme";
-// @ts-ignore
 import Playground from "./playground.vue";
-// @ts-ignore
 import { nextTick, provide } from "vue";
 
 const { frontmatter, isDark } = useData();

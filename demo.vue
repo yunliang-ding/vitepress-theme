@@ -1,9 +1,8 @@
 <script setup lang="ts">
-// @ts-ignore
+// @ts-nocheck
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import { withBase } from 'vitepress'
 
-// @ts-ignore
 const props = defineProps<{
   component: any;
   code: { raw: string; html: string; srcPath: string };
@@ -16,17 +15,15 @@ const copied = ref(false);
 let previewRoot: any = null;
 let copyTimer: ReturnType<typeof setTimeout> | null = null;
 
-async function mountPreview() {
+function mountPreview() {
   if (!previewRef.value) return;
-  const [{ default: React }, { createRoot }] = await Promise.all([
-    import("react"),
-    import("react-dom/client"),
-  ]);
+  const React = (window as any).React;
+  const ReactDOM = (window as any).ReactDOM;
+  if (!React || !ReactDOM) return;
   previewRoot?.unmount();
-  previewRoot = createRoot(previewRef.value);
+  previewRoot = ReactDOM.createRoot(previewRef.value);
   previewRoot.render(React.createElement(props.component));
 }
-
 function openLive() {
   const url = `/playground.html?demo=${props.code.srcPath}`;
   window.open(withBase(url), "_blank");

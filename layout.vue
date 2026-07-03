@@ -131,11 +131,6 @@ h2.text {
   margin-bottom: 0.5em;
 }
 
-/* 调整样式 */
-body {
-  --vp-code-font-size: 12px !important;
-}
-
 .VPDoc.has-aside .content-container {
   max-width: 940px;
 }
@@ -188,11 +183,6 @@ body {
   margin-left: 30px !important;
 }
 
-.vp-doc td,
-.vp-doc th {
-  font-size: 12px;
-}
-
 .custom-block {
   padding: 12px 30px !important;
 }
@@ -229,32 +219,11 @@ h2.text {
   --vp-button-brand-bg: var(--soui-brand-6);
 }
 
-body {
-  font-size: 12px;
-}
-
 .VPNavBar.has-sidebar .content {
   padding-right: 40px !important;
 }
 
 h2 {
   margin-left: 0 !important;
-}
-
-.VPImage.logo {
-  border-radius: 50%;
-  height: 30px;
-}
-
-.vp-doc[class*=" _interview"] .custom-block {
-  padding: 16px !important;
-}
-
-.vp-doc[class*=" _interview"] .custom-block summary {
-  margin-bottom: 0 !important;
-}
-
-.vp-doc[class*=" _interview"] .custom-block p {
-  margin: 0 !important;
 }
 </style>

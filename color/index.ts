@@ -22,8 +22,8 @@ export default (
   theme: "dark" | "light",
   color: "red" | "pink" | "blue" | "green" | "orange" | "purple" = "blue"
 ) => {
-  console.log(theme, color);
   const themeColor = themeColors[color];
+  document.documentElement.style.setProperty("--soui-brand-6", themeColor['Brand-6']);
   (window as any).Shineout?.setToken?.({
     selector: "html",
     token: {

@@ -128,10 +128,10 @@ onUnmounted(() => document.removeEventListener("click", handleClickOutside));
   top: calc(100% + 8px); /* 距离触发器下方 8px */
   right: -20px;
   /* 如果需要居右对齐，把 left:0 改为 right:0 */
-  background-color: var(--soui-neutral-fill-2);
+  background-color: var(--vp-c-bg);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  border: 1px solid var(--soui-neutral-border-1);
+  border: 1px solid var(--vp-c-gutter);
   padding: 6px 0;
   z-index: 2000;
   overflow: hidden;
@@ -156,7 +156,7 @@ onUnmounted(() => document.removeEventListener("click", handleClickOutside));
 }
 
 .menu-item:hover {
-  background-color: var(--soui-neutral-fill-3); /* 浅灰色 hover 背景 */
+  background-color: var(--vp-c-bg-soft); /* 浅灰色 hover 背景 */
 }
 
 /* Label 样式 */

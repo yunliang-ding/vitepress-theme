@@ -47,10 +47,10 @@ const colorConfig = [
     ...item,
     onClick: async () => {
       localStorage?.setItem("color", item.key);
-      setTheme(isDark.value ? "dark" : "light", item.key);
+      const rgbColor = setTheme(isDark.value ? "dark" : "light", item.key);
       themeHooks.onThemeChange?.({
         theme: isDark.value ? "dark" : "light",
-        color: item.key,
+        color: rgbColor,
       });
     },
   };
@@ -95,18 +95,18 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
 onMounted(() => {
   watch(isDark, async (dark) => {
     const color = localStorage?.getItem("color") as any;
-    setTheme(dark ? "dark" : "light", color);
+    const rgbColor = setTheme(dark ? "dark" : "light", color);
     themeHooks.onThemeChange?.({
       theme: dark ? "dark" : "light",
-      color: color || "blue",
+      color: rgbColor || "blue",
     });
   });
   setTimeout(async () => {
     const color = localStorage?.getItem("color") as any;
-    setTheme(isDark.value ? "dark" : "light", color);
+    const rgbColor = setTheme(isDark.value ? "dark" : "light", color);
     themeHooks.onThemeChange?.({
       theme: isDark.value ? "dark" : "light",
-      color: color || "blue",
+      color: rgbColor || "blue",
     });
   }, 800);
 });

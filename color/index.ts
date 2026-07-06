@@ -38,4 +38,5 @@ export default (
   } else {
     document.documentElement.style.removeProperty("color-scheme");
   }
+  return themeColor['Brand-6'];
 };

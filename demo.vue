@@ -145,8 +145,9 @@ onBeforeUnmount(() => previewRoot?.unmount());
 }
 
 .aui-demo-preview {
-  padding: 32px 24px;
+  padding: 20px;
   min-height: 80px;
+  overflow: auto;
   background: var(--vp-c-bg);
 }
 

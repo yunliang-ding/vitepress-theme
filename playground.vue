@@ -3,6 +3,7 @@
 import React from "react";
 import * as ReactDOMClient from "react-dom/client";
 import { ref, inject, onMounted, onBeforeUnmount } from "vue";
+import { Monaco as MonacoEditor } from "@yl_lowcode/editor";
 /**
  * 通用 Playground 组件
  *
@@ -128,9 +129,6 @@ onMounted(async () => {
       setPreview(() => component);
       setError(err);
     }, []);
-
-    // 动态获取 Monaco 组件（从 moduleMap 中取）
-    const MonacoEditor = userModules["@yl_lowcode/editor"]?.Monaco;
 
     return React.createElement(
       "div",

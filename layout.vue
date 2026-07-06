@@ -4,9 +4,12 @@ import { useData } from "vitepress";
 import DefaultTheme from "vitepress/theme";
 import Playground from "./playground.vue";
 import setTheme from "./color";
-import { watch, nextTick, provide, onMounted } from "vue";
+import { watch, nextTick, provide, inject, onMounted } from "vue";
+import type { ThemeHooks } from "./index";
 // @ts-ignore
 import NiceDropdown from "./drop-down.vue";
+
+const themeHooks = inject<ThemeHooks>("theme-hooks", {});
 
 const colorConfig = [
   {
@@ -45,6 +48,10 @@ const colorConfig = [
     onClick: async () => {
       localStorage?.setItem("color", item.key);
       setTheme(isDark.value ? "dark" : "light", item.key);
+      themeHooks.onThemeChange?.({
+        theme: isDark.value ? "dark" : "light",
+        color: item.key,
+      });
     },
   };
 });
@@ -87,13 +94,20 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
 
 onMounted(() => {
   watch(isDark, async (dark) => {
-    setTheme(dark ? "dark" : "light", localStorage?.getItem("color") as any);
+    const color = localStorage?.getItem("color") as any;
+    setTheme(dark ? "dark" : "light", color);
+    themeHooks.onThemeChange?.({
+      theme: dark ? "dark" : "light",
+      color: color || "blue",
+    });
   });
   setTimeout(async () => {
-    setTheme(
-      isDark.value ? "dark" : "light",
-      localStorage?.getItem("color") as any
-    );
+    const color = localStorage?.getItem("color") as any;
+    setTheme(isDark.value ? "dark" : "light", color);
+    themeHooks.onThemeChange?.({
+      theme: isDark.value ? "dark" : "light",
+      color: color || "blue",
+    });
   }, 800);
 });
 </script>

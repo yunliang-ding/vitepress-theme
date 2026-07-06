@@ -1,27 +1,27 @@
 {
   "name": "@yl_lowcode/docs-theme",
-  "version": "0.0.8",
+  "version": "0.0.12",
   "description": "共享 VitePress 文档主题（React Demo 支持）",
   "type": "module",
   "main": "index.ts",
+  "scripts": {
+    "publish": "./publish.sh"
+  },
   "exports": {
     ".": "./index.ts",
     "./plugins/shiki-raw": "./plugins/shiki-raw.js"
   },
-  "dependencies": {
-    "sucrase": "3.35.1",
-    "@yl_lowcode/editor": "0.0.1"
-  },
   "peerDependencies": {
+    "vue": "^3.4.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "sucrase": "3.35.1",
     "vitepress": ">=1.6.0",
-    "vue": "^3.4.0"
+    "@yl_lowcode/editor": "0.0.1"
   },
   "license": "MIT",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
-  },
-  "scripts": {}
+  }
 }

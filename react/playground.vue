@@ -29,7 +29,9 @@ onMounted(async () => {
   if (!demo) return;
 
   // 在 globs 中查找匹配的 demo 文件
-  const matchKey = Object.keys(config.codeGlobs).find((k) => k.includes(`/${demo}.tsx`));
+  const matchKey = Object.keys(config.codeGlobs).find((k) =>
+    k.includes(`/${demo}.tsx`)
+  );
   if (!matchKey) return;
 
   const rawCode = (await config.codeGlobs[matchKey]()).raw as string;
@@ -58,7 +60,7 @@ onMounted(async () => {
       new Function("require", "module", "exports", compiled)(
         require,
         { exports },
-        exports,
+        exports
       );
 
       const Component = (exports.default ?? exports) as React.ComponentType;
@@ -101,7 +103,7 @@ onMounted(async () => {
               overflow: "auto",
             },
           },
-          "Runtime error: " + this.state.error,
+          "Runtime error: " + this.state.error
         );
       }
       return (this.props as any).children;
@@ -117,10 +119,10 @@ onMounted(async () => {
   function App() {
     const [code, setCode] = React.useState(rawCode);
     const [Preview, setPreview] = React.useState(
-      () => compileCode(rawCode, moduleMap).component,
+      () => compileCode(rawCode, moduleMap).component
     );
     const [error, setError] = React.useState(
-      () => compileCode(rawCode, moduleMap).error,
+      () => compileCode(rawCode, moduleMap).error
     );
 
     const handleCodeChange = React.useCallback((newCode: string) => {
@@ -153,8 +155,13 @@ onMounted(async () => {
           : React.createElement("textarea", {
               value: code,
               onChange: (e: any) => handleCodeChange(e.target.value),
-              style: { width: "100%", height: "100%", fontFamily: "monospace", padding: "16px" },
-            }),
+              style: {
+                width: "100%",
+                height: "100%",
+                fontFamily: "monospace",
+                padding: "16px",
+              },
+            })
       ),
       // 右侧：预览 + 错误
       React.createElement(
@@ -185,7 +192,7 @@ onMounted(async () => {
                 overflow: "auto",
               },
             },
-            error,
+            error
           ),
         React.createElement(
           ErrorBoundary,
@@ -193,10 +200,10 @@ onMounted(async () => {
           React.createElement(
             "div",
             { style: { flex: 1, padding: "24px", overflow: "auto" } },
-            Preview && React.createElement(Preview),
-          ),
-        ),
-      ),
+            Preview && React.createElement(Preview)
+          )
+        )
+      )
     );
   }
 

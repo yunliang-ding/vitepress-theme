@@ -7,7 +7,7 @@
 
     <!-- 底部操作栏 -->
     <div class="aui-demo-footer">
-      <span class="aui-demo-desc">{{ title ?? '' }}</span>
+      <span class="aui-demo-desc">{{ title ?? "" }}</span>
       <div class="aui-demo-actions">
         <button
           class="aui-action-btn"
@@ -15,7 +15,16 @@
           :title="expanded ? '收起代码' : '展开代码'"
           @click="expanded = !expanded"
         >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <polyline v-if="!expanded" points="6 9 12 15 18 9" />
             <polyline v-else points="18 15 12 9 6 15" />
           </svg>
@@ -26,15 +35,44 @@
     <!-- 代码区（可展开） -->
     <div v-show="expanded" class="aui-demo-code">
       <span class="aui-lang-label">vue</span>
-      <button class="aui-copy-btn" :class="{ copied }" @click="copyCode" title="复制代码">
+      <button
+        class="aui-copy-btn"
+        :class="{ copied }"
+        @click="copyCode"
+        title="复制代码"
+      >
         <span v-if="copied" class="aui-copy-label">已复制</span>
-        <svg v-if="copied" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" />
+        <svg
+          v-if="copied"
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"
+          />
           <rect x="9" y="3" width="6" height="4" rx="1" />
           <polyline points="9 12 11 14 15 10" />
         </svg>
-        <svg v-else viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" />
+        <svg
+          v-else
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"
+          />
           <rect x="9" y="3" width="6" height="4" rx="1" />
         </svg>
       </button>
@@ -45,29 +83,31 @@
 
 <script setup lang="ts">
 // @ts-nocheck
-import { ref } from 'vue'
-import { withBase } from 'vitepress'
+import { ref } from "vue";
+import { withBase } from "vitepress";
 
 const props = defineProps<{
-  component: any
-  code: { raw: string; html: string; srcPath: string }
-  title?: string
-}>()
+  component: any;
+  code: { raw: string; html: string; srcPath: string };
+  title?: string;
+}>();
 
-const expanded = ref(false)
-const copied = ref(false)
-let copyTimer: ReturnType<typeof setTimeout> | null = null
+const expanded = ref(false);
+const copied = ref(false);
+let copyTimer: ReturnType<typeof setTimeout> | null = null;
 
-  function openLive() {
+function openLive() {
   const url = `/playground.html?demo=${props.code.srcPath}`;
   window.open(withBase(url), "_blank");
 }
 
 async function copyCode() {
-  await navigator.clipboard.writeText(props.code.raw)
-  copied.value = true
-  if (copyTimer) clearTimeout(copyTimer)
-  copyTimer = setTimeout(() => { copied.value = false }, 2000)
+  await navigator.clipboard.writeText(props.code.raw);
+  copied.value = true;
+  if (copyTimer) clearTimeout(copyTimer);
+  copyTimer = setTimeout(() => {
+    copied.value = false;
+  }, 2000);
 }
 </script>
 
@@ -171,7 +211,8 @@ async function copyCode() {
   color: var(--vp-c-text-2);
   font-size: 13px;
   cursor: pointer;
-  transition: color 0.15s, border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  transition: color 0.15s, border-color 0.15s, background 0.15s,
+    box-shadow 0.15s;
   opacity: 0;
 }
 .aui-demo-code:hover .aui-copy-btn {

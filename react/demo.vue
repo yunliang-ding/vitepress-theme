@@ -3,7 +3,7 @@
 import React from "react";
 import * as ReactDOMClient from "react-dom/client";
 import { ref, onMounted, onBeforeUnmount } from "vue";
-import { withBase } from 'vitepress'
+import { withBase } from "vitepress";
 
 const props = defineProps<{
   component: any;

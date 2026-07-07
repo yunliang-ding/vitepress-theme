@@ -2,12 +2,21 @@
 // @ts-nocheck
 import { useData } from "vitepress";
 import DefaultTheme from "vitepress/theme";
-import Playground from "./playground.vue";
 import setTheme from "../color";
-import { watch, nextTick, provide, inject, onMounted } from "vue";
+import {
+  defineAsyncComponent,
+  watch,
+  nextTick,
+  provide,
+  inject,
+  onMounted,
+} from "vue";
 import type { ThemeHooks } from "../index";
 // @ts-ignore
 import NiceDropdown from "../drop-down.vue";
+
+// 仅客户端加载 Playground（包含 CSS import，SSR 不支持）
+const Playground = defineAsyncComponent(() => import("./playground.vue"));
 
 const themeHooks = inject<ThemeHooks>("theme-hooks", {});
 
@@ -113,7 +122,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <Playground v-if="frontmatter.layout === 'playground'" />
+  <ClientOnly v-if="frontmatter.layout === 'playground'">
+    <Playground />
+  </ClientOnly>
   <DefaultTheme.Layout v-else>
     <template #nav-bar-content-after>
       <slot name="nav-bar-content-after" />

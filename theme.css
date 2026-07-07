@@ -8,7 +8,7 @@ html:not(.dark) .shiki span {
   font-size: 13px;
 }
 
-.vp-doc .language-tsx {
+.vp-doc div[class*='language-'] {
   margin: 0 !important;
   border-radius: 0 !important;
 }

@@ -2,6 +2,7 @@
 // @ts-nocheck
 import { useData } from "vitepress";
 import DefaultTheme from "vitepress/theme";
+import Playground from "./playground.vue";
 import setTheme from "../color";
 import { watch, nextTick, provide, inject, onMounted } from "vue";
 import type { ThemeHooks } from "../index";
@@ -112,7 +113,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <DefaultTheme.Layout>
+  <Playground v-if="frontmatter.layout === 'playground'" />
+  <DefaultTheme.Layout v-else>
     <template #nav-bar-content-after>
       <slot name="nav-bar-content-after" />
       <NiceDropdown :options="colorConfig" width="90px">

@@ -9,6 +9,16 @@
     <div class="aui-demo-footer">
       <span class="aui-demo-desc">{{ title ?? "" }}</span>
       <div class="aui-demo-actions">
+        <!-- 在线调试（新 Tab） -->
+        <button class="aui-action-btn" title="在线调试" @click="openLive">
+          <svg viewBox="0 0 1024 1024" width="16" height="16">
+            <path
+              d="M746.222933 102.239573l-359.799466 330.820267L185.347413 281.4976 102.2464 329.864533l198.20544 182.132054-198.20544 182.132053 83.101013 48.510293 201.076054-151.558826 359.799466 330.676906 175.527254-85.251413V187.4944z m0 217.57952v384.341334l-255.040853-192.177494z"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
+        <!-- 展开/收起代码 -->
         <button
           class="aui-action-btn"
           :class="{ active: expanded }"

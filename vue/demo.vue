@@ -130,7 +130,7 @@ async function copyCode() {
 }
 
 .aui-demo-preview {
-  padding: 32px 24px;
+  padding: 20px;
   min-height: 80px;
   background: var(--vp-c-bg);
 }

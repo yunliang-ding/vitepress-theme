@@ -175,9 +175,9 @@ h2.text {
 }
 
 :root {
-  --soui-font-14: 12px;
+  /* --soui-font-14: 12px;
   --soui-tabs-tab-font-size: 12px;
-  --soui-14-regular: 12px;
+  --soui-14-regular: 12px; */
   --vp-c-brand-1: var(--soui-brand-6, #197afa);
   --vp-c-brand-2: var(--soui-brand-6, #197afa);
   --vp-button-brand-bg: var(--soui-brand-6, #197afa);

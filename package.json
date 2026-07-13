@@ -1,6 +1,6 @@
 {
   "name": "@lite-code/vitepress-theme",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "共享 VitePress 文档主题（React Demo 支持）",
   "type": "module",
   "main": "react/index.ts",

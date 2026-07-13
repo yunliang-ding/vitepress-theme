@@ -3,14 +3,14 @@
 import React from "react";
 import * as ReactDOMClient from "react-dom/client";
 import { ref, inject, onMounted, onBeforeUnmount } from "vue";
-import { Monaco as MonacoEditor } from "@yl_lowcode/editor";
+import { Monaco as MonacoEditor } from "@lite-code/editor";
 /**
  * 通用 Playground 组件
  *
  * 使用方需通过 provide 注入以下配置：
  *   provide("playground-config", {
  *     codeGlobs: import.meta.glob("../../demos/**\/*.tsx", { query: "?raw", import: "default" }),
- *     loadModules: () => import("@yl_lowcode/editor").then(m => ({ "@yl_lowcode/editor": m })),
+ *     loadModules: () => import("@lite-code/editor").then(m => ({ "@lite-code/editor": m })),
  *   })
  */
 const config = inject<{

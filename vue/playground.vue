@@ -6,7 +6,7 @@
  * 使用方需通过 provide 注入以下配置：
  *   provide("vue-playground-config", {
  *     imports: {
- *       "@yl_lowcode/aui-vue": "/libs/aui-vue.esm.js",
+ *       "@lite-code/aui-vue": "/libs/aui-vue.esm.js",
  *     },
  *     css: ["/libs/styles.css"],
  *     codeGlobs: import.meta.glob("../../demos/**\/*.vue", { query: "?raw", import: "default" }),

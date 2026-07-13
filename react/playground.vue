@@ -72,8 +72,9 @@ onMounted(async () => {
             }
           }),
           EditorView.theme({
-            "&": { height: "100%" },
+            "&": { height: "100%", fontSize: "12px" },
             ".cm-scroller": { overflow: "auto" },
+            ".cm-gutters": { fontSize: "12px" },
           }),
         ],
       }),

@@ -27,10 +27,6 @@ pnpm add @lite-code/vitepress-theme
   // React 文档额外需要
   "react": "^18.0.0",
   "react-dom": "^18.0.0",
-  "sucrase": "3.35.1",
-  "@lite-code/editor": "0.0.1",
-  // Vue 文档额外需要
-  "@vue/repl": "^4.0.0"
 }
 ```
 
@@ -60,8 +56,8 @@ const Layout = defineComponent({
         import: "default",
       }),
       loadModules: () =>
-        import("@lite-code/aui").then((m) => ({
-          "@lite-code/aui": m,
+        import("@lite-code/reactive").then((m) => ({
+          "@lite-code/reactive": m,
         })),
     });
 
@@ -125,7 +121,7 @@ provide("playground-config", {
   // 返回运行时依赖模块映射
   loadModules: () =>
     Promise.resolve({
-      "@lite-code/aui": auiModule,
+      "@lite-code/reactive": reactive,
       "some-other-lib": otherModule,
     }),
 });

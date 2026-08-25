@@ -19,31 +19,27 @@ export const themeColors = {
 };
 
 export default (
-  theme: "dark" | "light",
-  color: "red" | "pink" | "blue" | "green" | "orange" | "purple" = "blue"
+  theme: "dark" | "light" = "light",
+  color: "red" | "pink" | "blue" | "green" | "orange" | "purple" = "blue",
 ) => {
   const themeColor = themeColors[color];
-  if (themeColor) {
-    document.documentElement.style.setProperty(
-      "--soui-brand-6",
-      themeColor["Brand-6"]
-    );
-    (window as any).Shineout?.setToken?.({
-      selector: "html",
-      token: {
-        ...(theme === "dark" ? dark : light),
-        ...themeColor,
-        "Brand-1":
-          theme === "dark"
-            ? themeColor["Brand-1"] + "00"
-            : themeColor["Brand-1"],
-      },
-    });
-    if (theme === "dark") {
-      document.documentElement.style.setProperty("color-scheme", "dark");
-    } else {
-      document.documentElement.style.removeProperty("color-scheme");
-    }
-    return themeColor["Brand-6"];
+  document.documentElement.style.setProperty(
+    "--soui-brand-6",
+    themeColor["Brand-6"],
+  );
+  (window as any).Shineout?.setToken?.({
+    selector: "html",
+    token: {
+      ...(theme === "dark" ? dark : light),
+      ...themeColor,
+      "Brand-1":
+        theme === "dark" ? themeColor["Brand-1"] + "00" : themeColor["Brand-1"],
+    },
+  });
+  if (theme === "dark") {
+    document.documentElement.style.setProperty("color-scheme", "dark");
+  } else {
+    document.documentElement.style.removeProperty("color-scheme");
   }
+  return themeColor["Brand-6"];
 };

@@ -1,4 +1,4 @@
-# @lite-code/vitepress-theme
+# @yl2/vitepress-theme
 
 基于 VitePress 的共享文档主题，支持 **React** 和 **Vue** 组件库文档站点，提供统一的 Demo 展示、代码高亮、在线 Playground 调试能力。
 
@@ -15,7 +15,7 @@
 ## 安装
 
 ```bash
-pnpm add @lite-code/vitepress-theme
+pnpm add @yl2/vitepress-theme
 ```
 
 ### 对等依赖
@@ -38,7 +38,7 @@ pnpm add @lite-code/vitepress-theme
 
 ```ts
 // .vitepress/theme/index.ts
-import docsTheme from "@lite-code/vitepress-theme"; // 默认导出 react 入口
+import docsTheme from "@yl2/vitepress-theme"; // 默认导出 react 入口
 import { provide, h, defineComponent } from "vue";
 
 const Layout = defineComponent({
@@ -56,8 +56,8 @@ const Layout = defineComponent({
         import: "default",
       }),
       loadModules: () =>
-        import("@lite-code/reactive").then((m) => ({
-          "@lite-code/reactive": m,
+        import("@yl2/reactive").then((m) => ({
+          "@yl2/reactive": m,
         })),
     });
 
@@ -75,7 +75,7 @@ export default {
 
 ```ts
 // .vitepress/config.ts
-import { shikiRawPlugin } from "@lite-code/vitepress-theme/plugins/shiki-raw";
+import { shikiRawPlugin } from "@yl2/vitepress-theme/plugins/shiki-raw";
 
 export default defineConfig({
   vite: {
@@ -121,7 +121,7 @@ provide("playground-config", {
   // 返回运行时依赖模块映射
   loadModules: () =>
     Promise.resolve({
-      "@lite-code/reactive": reactive,
+      "@yl2/reactive": reactive,
       "some-other-lib": otherModule,
     }),
 });
@@ -135,7 +135,7 @@ provide("playground-config", {
 
 ```ts
 // .vitepress/theme/index.ts
-import docsTheme from "@lite-code/vitepress-theme/vue";
+import docsTheme from "@yl2/vitepress-theme/vue";
 import { provide, h, defineComponent } from "vue";
 
 const Layout = defineComponent({
@@ -149,7 +149,7 @@ const Layout = defineComponent({
     // 注入 Playground 配置
     provide("vue-playground-config", {
       imports: {
-        "@lite-code/aui-vue": "/libs/aui-vue.esm.js",
+        "@yl2/aui-vue": "/libs/aui-vue.esm.js",
       },
       css: ["/libs/styles.css"],
       codeGlobs: import.meta.glob("../../demos/**/*.vue", {
@@ -172,7 +172,7 @@ export default {
 
 ```ts
 // .vitepress/config.ts
-import { vueRawPlugin } from "@lite-code/vitepress-theme/plugins/shiki-vue";
+import { vueRawPlugin } from "@yl2/vitepress-theme/plugins/shiki-vue";
 
 export default defineConfig({
   vite: {
@@ -227,7 +227,7 @@ provide("vue-playground-config", {
   // importMap：sandbox iframe 中可 import 的包名 → ESM URL 映射
   // 支持相对路径（自动拼接 origin）或完整 URL
   imports: {
-    "@lite-code/aui-vue": "/libs/aui-vue.esm.js",
+    "@yl2/aui-vue": "/libs/aui-vue.esm.js",
     "some-other-lib": "https://cdn.example.com/lib.esm.js",
   },
   // 注入到 sandbox iframe <head> 的 CSS 样式
@@ -264,17 +264,17 @@ provide("theme-hooks", {
 
 | 路径                                       | 说明                        |
 | ------------------------------------------ | --------------------------- |
-| `@lite-code/vitepress-theme`                   | React 文档主题（默认）      |
-| `@lite-code/vitepress-theme/vue`               | Vue 文档主题                |
-| `@lite-code/vitepress-theme/plugins/shiki-raw` | React (.tsx) Shiki 高亮插件 |
-| `@lite-code/vitepress-theme/plugins/shiki-vue` | Vue (.vue) Shiki 高亮插件   |
+| `@yl2/vitepress-theme`                   | React 文档主题（默认）      |
+| `@yl2/vitepress-theme/vue`               | Vue 文档主题                |
+| `@yl2/vitepress-theme/plugins/shiki-raw` | React (.tsx) Shiki 高亮插件 |
+| `@yl2/vitepress-theme/plugins/shiki-vue` | Vue (.vue) Shiki 高亮插件   |
 
 ---
 
 ## 目录结构
 
 ```
-@lite-code/vitepress-theme/
+@yl2/vitepress-theme/
 ├── react/
 │   ├── index.ts          # React 主题入口
 │   ├── layout.vue        # Layout（含 playground 判断 + 主题切换）
